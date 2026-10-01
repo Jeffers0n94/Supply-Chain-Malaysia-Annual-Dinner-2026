@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>SCM Annual Dinner 2026 | Seating & Floor Plan</title>
+  <style>
+    :root {
+      --bg-main: #0b132b;
+      --bg-panel: #1c2541;
+      --bg-card: #151d38;
+      --accent-cyan: #64dfdf;
+      --accent-teal: #5bc0be;
+      --accent-gold: #ffb703;
+      --accent-green: #52b788;
+      --accent-red: #d90429;
+      --text-main: #ffffff;
+      --text-muted: #8d99ae;
+      --border-color: #3a506b;
+      --card-radius: 12px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      padding: 16px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1280px;
+    }
+
+    /* Header Banner */
+    .header-banner {
+      background: linear-gradient(135deg, #1c2541 0%, #0b132b 100%);
+      border: 1px solid var(--border-color);
+      border-radius: var(--card-radius);
+      padding: 24px 20px;
+      text-align: center;
+      margin-bottom: 20px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+    .header-banner::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--accent-cyan), var(--accent-teal), var(--accent-gold));
+    }
+    .badge-event {
+      display: inline-block;
+      background: rgba(100, 223, 223, 0.15);
+      color: var(--accent-cyan);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 8px;
+      border: 1px solid rgba(100, 223, 223, 0.3);
+    }
+    .header-banner h1 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+    .header-banner h2 {
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--accent-teal);
+      margin-bottom: 12px;
+    }
+    .stats-bar {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 12px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    .stats-item span {
+      color: var(--text-main);
+      font-weight: 600;
+    }
+
+    /* Guest Quick Lookup */
+    .search-card {
+      background-color: var(--bg-panel);
+      border: 1px solid var(--accent-teal);
+      border-radius: var(--card-radius);
+      padding: 20px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 18px rgba(91, 192, 190, 0.15);
+    }
+    .search-card h3 {
+      font-size: 1.1rem;
+      color: var(--accent-cyan);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .search-card p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+    .search-input-wrapper {
+      position: relative;
+      display: flex;
+      gap: 10px;
+    }
+    .search-input {
+      flex: 1;
+      padding: 14px 16px;
+      background-color: var(--bg-main);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      color: #ffffff;
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .search-input:focus {
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 10px rgba(100, 223, 223, 0.3);
+    }
+    .search-btn {
+      padding: 0 20px;
+      background: linear-gradient(135deg, #5bc0be 0%, #3a506b 100%);
+      color: #0b132b;
+      font-weight: 700;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    /* Search Result Card */
+    .search-result {
+      margin-top: 15px;
+      background-color: var(--bg-card);
+      border-radius: 10px;
+      padding: 16px;
+      border: 1px solid var(--border-color);
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+    .search-result.active {
+      display: block;
+    }
+    .search-result-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 10px;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 8px;
+    }
+    .result-name {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+    .result-dept {
+      font-size: 0.85rem;
+      color: var(--accent-teal);
+    }
+    .result-table-box {
+      display: flex;
+      gap: 16px;
+      margin-top: 12px;
+    }
+    .badge-box {
+      flex: 1;
+      background-color: var(--bg-main);
+      padding: 12px;
+      border-radius: 8px;
+      text-align: center;
+      border: 1px solid var(--border-color);
+    }
+    .badge-box .title {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+    .badge-box .val {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--accent-gold);
+    }
+    .locate-btn {
+      width: 100%;
+      margin-top: 14px;
+      padding: 12px;
+      background-color: var(--accent-cyan);
+      color: #0b132b;
+      font-weight: 700;
+      font-size: 0.95rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: background-color 0.2s;
+    }
+    .locate-btn:hover {
+      background-color: #52b788;
+    }
+
+    /* Legend */
+    .legend-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      background-color: var(--bg-panel);
+      padding: 12px 16px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      margin-bottom: 18px;
+      font-size: 0.82rem;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #e0e1dd;
+    }
+    .legend-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+    .dot-avail { background-color: var(--accent-green); }
+    .dot-partial { background-color: var(--accent-gold); }
+    .dot-full { background-color: var(--accent-red); }
+    .dot-selected { background-color: var(--accent-cyan); box-shadow: 0 0 8px var(--accent-cyan); }
+
+    /* Ballroom Grid Section */
+    .ballroom-wrapper {
+      background-color: var(--bg-panel);
+      border: 1px solid var(--border-color);
+      border-radius: var(--card-radius);
+      padding: 20px;
+      overflow-x: auto;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+      margin-bottom: 30px;
+    }
+    .ballroom-title {
+      font-size: 1.1rem;
+      color: var(--accent-cyan);
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .ballroom-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    /* Ballroom Serpentine Grid */
+    .ballroom-grid {
+      display: grid;
+      grid-template-columns: 28px 140px repeat(9, 82px) 28px;
+      grid-template-rows: 45px repeat(4, 82px) 50px;
+      gap: 12px;
+      background-color: var(--bg-main);
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid var(--border-color);
+      width: max-content;
+      margin: 0 auto;
+    }
+
+    /* Hall Structural Objects */
+    .floor-object {
+      background-color: var(--bg-panel);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 6px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-align: center;
+      user-select: none;
+    }
+    .led-screen-left {
+      background-color: #1d3557;
+      border: 1px solid #00b4d8;
+      color: #00b4d8;
+      writing-mode: vertical-lr;
+      letter-spacing: 3px;
+    }
+    .lcd-screen-top {
+      background-color: #1d3557;
+      border: 1px solid #00b4d8;
+      color: #00b4d8;
+      letter-spacing: 3px;
+    }
+    .lcd-screen-right {
+      background-color: #1d3557;
+      border: 1px solid #00b4d8;
+      color: #00b4d8;
+      writing-mode: vertical-lr;
+      letter-spacing: 3px;
+    }
+    .av-control {
+      border: 1px dashed var(--border-color);
+      color: #e0e1dd;
+    }
+    .gift-table {
+      border: 1px dashed var(--accent-gold);
+      color: var(--accent-gold);
+    }
+    .stage-box {
+      background: linear-gradient(135deg, #1d3557 0%, #2b4b77 100%);
+      border: 2px solid var(--accent-cyan);
+      color: #ffffff;
+      box-shadow: 0 0 15px rgba(0, 180, 216, 0.2);
+    }
+    .stage-box h4 {
+      font-size: 1.1rem;
+      letter-spacing: 2px;
+      color: var(--accent-cyan);
+    }
+    .stage-box p {
+      font-size: 0.75rem;
+      color: #e0e1dd;
+      margin-top: 4px;
+    }
+    .entrance-box {
+      background-color: #1b4332;
+      border: 1px solid #52b788;
+      color: #95d5b2;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+    .buffet-line {
+      background-color: #1d3557;
+      border: 1px solid #457b9d;
+      color: #a8dadc;
+      letter-spacing: 2px;
+    }
+
+    /* Table Node */
+    .table-node {
+      width: 82px;
+      height: 82px;
+      border-radius: 50%;
+      background-color: var(--bg-panel);
+      border: 2px solid var(--accent-red);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      position: relative;
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+      user-select: none;
+    }
+    .table-node:hover {
+      transform: scale(1.08);
+      z-index: 10;
+      box-shadow: 0 0 16px rgba(100, 223, 223, 0.4);
+    }
+    .table-node.not-full {
+      border-color: var(--accent-gold);
+    }
+    .table-node.highlighted {
+      border-color: var(--accent-cyan) !important;
+      background-color: rgba(100, 223, 223, 0.25) !important;
+      box-shadow: 0 0 20px var(--accent-cyan);
+      animation: pulse 1.5s infinite alternate;
+    }
+    .table-num {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #ffffff;
+    }
+    .table-cap {
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+    .eleven-tag {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      background-color: #ffb703;
+      color: #0b132b;
+      font-size: 0.58rem;
+      font-weight: 800;
+      border-radius: 10px;
+      padding: 1px 5px;
+    }
+
+    @keyframes pulse {
+      from { transform: scale(1); }
+      to { transform: scale(1.12); }
+    }
+
+    /* Modal Seating Drawer */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(4px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      padding: 16px;
+    }
+    .modal-overlay.active {
+      display: flex;
+    }
+    .modal-content {
+      background-color: var(--bg-panel);
+      border: 1px solid var(--accent-teal);
+      border-radius: var(--card-radius);
+      width: 100%;
+      max-width: 520px;
+      max-height: 85vh;
+      overflow-y: auto;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+      padding: 24px;
+      position: relative;
+    }
+    .close-modal {
+      position: absolute;
+      top: 16px;
+      right: 18px;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+    .modal-header h3 {
+      font-size: 1.4rem;
+      color: var(--accent-cyan);
+      margin-bottom: 4px;
+    }
+    .modal-header p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .table-roster-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .roster-item {
+      display: flex;
+      align-items: center;
+      background-color: var(--bg-main);
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      gap: 12px;
+    }
+    .seat-badge {
+      background-color: var(--bg-card);
+      color: var(--accent-gold);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 6px;
+      border: 1px solid var(--border-color);
+      min-width: 48px;
+      text-align: center;
+    }
+    .guest-info {
+      flex: 1;
+    }
+    .guest-name {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: #ffffff;
+    }
+    .guest-dept {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header-banner h1 { font-size: 1.4rem; }
+      .ballroom-wrapper { padding: 12px; }
+      .search-input-wrapper { flex-direction: column; }
+      .search-btn { padding: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <!-- Header Banner -->
+  <header class="header-banner">
+    <div class="badge-event">Intel Supply Chain Malaysia</div>
+    <h1>Annual Dinner 2026</h1>
+    <h2>Seating Directory & Ballroom Floor Plan</h2>
+
+    <div class="stats-bar">
+      <div class="stats-item">Total Tables: <span>36</span></div>
+      <div class="stats-item">Seating Capacity: <span>370 Pax</span></div>
+      <div class="stats-item">11-Pax Tables: <span>10</span></div>
+      <div class="stats-item">10-Pax Tables: <span>26</span></div>
+    </div>
+  </header>
+
+  <!-- Guest Quick Lookup (QR Mobile Landing) -->
+  <section class="search-card">
+    <h3>🔍 Find Your Table & Seat</h3>
+    <p>Type your name to locate your assigned table and seat in the ballroom.</p>
+
+    <div class="search-input-wrapper">
+      <input 
+        type="text" 
+        id="searchInput" 
+        class="search-input" 
+        placeholder="Type your name (e.g., Jeff Heah, Kasturi, Loke)..." 
+        autocomplete="off"
+      />
+      <button class="search-btn" onclick="handleSearch()">Search</button>
+    </div>
+
+    <div id="searchResult" class="search-result">
+      <div class="search-result-header">
+        <div>
+          <div class="result-name" id="resName">-</div>
+          <div class="result-dept" id="resDept">-</div>
+        </div>
+      </div>
+      <div class="result-table-box">
+        <div class="badge-box">
+          <div class="title">Assigned Table</div>
+          <div class="val" id="resTable">-</div>
+        </div>
+        <div class="badge-box">
+          <div class="title">Seat Position</div>
+          <div class="val" id="resSeat">-</div>
+        </div>
+      </div>
+      <button class="locate-btn" onclick="scrollToTable()">
+        📍 Locate Table on Ballroom Map
+      </button>
+    </div>
+  </section>
+
+  <!-- Legend -->
+  <div class="legend-container">
+    <div class="legend-item"><div class="legend-dot dot-full"></div> Fully Occupied</div>
+    <div class="legend-item"><div class="legend-dot dot-partial"></div> Available Seats (Tables 7, 9, 23, 27, 30, 31)</div>
+    <div class="legend-item"><div class="legend-dot dot-selected"></div> Your Located Table</div>
+  </div>
+
+  <!-- Interactive Ballroom Map -->
+  <section class="ballroom-wrapper">
+    <div class="ballroom-title">🏛️ Grand Ballroom Layout</div>
+    <div class="ballroom-sub">Tap any table circle to view confirmed table guests and seat placements.</div>
+
+    <div class="ballroom-grid" id="ballroomGrid">
+      <!-- Col 1: Leftmost Screens -->
+      <div class="floor-object led-screen-left" style="grid-column: 1; grid-row: 2 / span 3;">LED SCREEN</div>
+
+      <!-- Col 2: Top AV & Stage -->
+      <div class="floor-object av-control" style="grid-column: 2; grid-row: 1;">AV CONTROL<br>STATION</div>
+      <div class="floor-object gift-table" style="grid-column: 3; grid-row: 1;">GIFT TABLE</div>
+
+      <!-- Top Wall Screens (Cols 5-6 above T9 & T16) -->
+      <div class="floor-object lcd-screen-top" style="grid-column: 5 / span 2; grid-row: 1;">LCD SCREEN</div>
+
+      <!-- Stage (Col 2, Rows 2-5) -->
+      <div class="floor-object stage-box" style="grid-column: 2; grid-row: 2 / span 4;">
+        <h4>STAGE</h4>
+        <p>24FT × 12FT</p>
+      </div>
+
+      <!-- Entrance & Buffet Line (Row 6) -->
+      <div class="floor-object entrance-box" style="grid-column: 2; grid-row: 6;">ENTRANCE</div>
+      <div class="floor-object buffet-line" style="grid-column: 3 / span 9; grid-row: 6;">BUFFET SERVING LINE</div>
+
+      <!-- Col 12: Rightmost Screens -->
+      <div class="floor-object lcd-screen-right" style="grid-column: 12; grid-row: 2 / span 4;">LCD SCREEN</div>
+    </div>
+  </section>
+</div>
+
+<!-- Table Roster Modal -->
+<div class="modal-overlay" id="tableModal" onclick="closeModalOnBackdrop(event)">
+  <div class="modal-content">
+    <button class="close-modal" onclick="closeModal()">&times;</button>
+    <div class="modal-header">
+      <h3 id="modalTableTitle">Table Details</h3>
+      <p id="modalTableCapacity">Occupancy summary</p>
+    </div>
+    <ul class="table-roster-list" id="modalRosterList">
+      <!-- Populated via JavaScript -->
+    </ul>
+  </div>
+</div>
+
+<script>
+  // Serpentine Coordinate Map: Row,Col -> Physical Table ID
+  const TABLE_COORDINATE_MAP = {
+    "2,3": 1,  "2,4": 8,  "2,5": 9,  "2,6": 16, "2,7": 17, "2,8": 24, "2,9": 25, "2,10": 32, "2,11": 33,
+    "3,3": 2,  "3,4": 7,  "3,5": 10, "3,6": 15, "3,7": 18, "3,8": 23, "3,9": 26, "3,10": 31, "3,11": 34,
+    "4,3": 3,  "4,4": 6,  "4,5": 11, "4,6": 14, "4,7": 19, "4,8": 22, "4,9": 27, "4,10": 30, "4,11": 35,
+    "5,3": 4,  "5,4": 5,  "5,5": 12, "5,6": 13, "5,7": 20, "5,8": 21, "5,9": 28, "5,10": 29, "5,11": 36
+  };
+
+  const TABLES_WITH_11_SEATS = [2, 3, 7, 10, 15, 18, 23, 26, 31, 34];
+
+  // Sanitized Dataset: Employee Names & Department Groups only (WWIDs stripped for public safety)
+  const SEATING_RESERVATIONS = {
+    1: [
+      {seat: 1, name: "Krishnan, Kasturi", group: "Supply Chain Planning Operation"},
+      {seat: 2, name: "Chan, Kl Chan", group: "Strategic Parts Supply Chain"},
+      {seat: 3, name: "Loke, Shiuk Ming", group: "Foundry Customer and Strategic Planning"},
+      {seat: 4, name: "Chia, Vincent Lean Tatt", group: "Strategic Parts Supply Chain"},
+      {seat: 5, name: "Chitra A/P Arjunan", group: "Manufacturing Supply Chain (MSC) QR"},
+      {seat: 6, name: "Lim, Yen Chiew", group: "Foundry Customer and Strategic Planning"},
+      {seat: 7, name: "Lim, Catherine", group: "Global Operations"},
+      {seat: 8, name: "Mendoza, Celine Yap Y", group: "Global Supply Chain Operations"},
+      {seat: 9, name: "Ne Chin, Chiravong A", group: "Global Operations"},
+      {seat: 10, name: "Kalimutu, Suryakandh", group: "Supply Chain Planning Operation"}
+    ],
+    2: [
+      {seat: 1, name: "Pragasam, Justin", group: "Global Operation Support"},
+      {seat: 2, name: "Gan, Hock Boon", group: "Global Supply Chain Operations"},
+      {seat: 3, name: "Khoo, Poh Ann", group: "Foundry Customer and Strategic Planning"},
+      {seat: 4, name: "Birdsall, Jeffrey", group: "Foundry Customer and Strategic Planning"},
+      {seat: 5, name: "Tan, Tse Pei", group: "Foundry Customer and Strategic Planning"},
+      {seat: 6, name: "Ang, Lay Pin", group: "Foundry Customer and Strategic Planning"},
+      {seat: 7, name: "Ong, HJ", group: "Global Operations"},
+      {seat: 8, name: "Shirodkar, Shamin A", group: "Foundry Supply Chain and Manufacturing (FSMS)"},
+      {seat: 9, name: "Perumal, Arasu", group: "Supply Chain Planning Operation"},
+      {seat: 10, name: "Chin, Ting Chung", group: "Foundry Customer and Strategic Planning"},
+      {seat: 11, name: "Dharamaraj, Sri Vijayaraj", group: "Foundry Customer and Strategic Planning"}
+    ],
+    3: [
+      {seat: 1, name: "Lim, Agnes Lee Hoong", group: "Global Supply Chain Operations"},
+      {seat: 2, name: "Chang, Li Ting", group: "Global Supply Chain Operations"},
+      {seat: 3, name: "Lim, Lee Ling", group: "Global Supply Chain Operations"},
+      {seat: 4, name: "Lee, Samantha Sien Ling", group: "Global Supply Chain Operations"},
+      {seat: 5, name: "Tan, Mei Ling", group: "Global Supply Chain Operations"},
+      {seat: 6, name: "Teh, Joyce", group: "Global Supply Chain Operations"},
+      {seat: 7, name: "Wong, Ee Wen", group: "IT"},
+      {seat: 8, name: "Teh, Ean Hoon", group: "Global Supply Chain Operations"},
+      {seat: 9, name: "Heah, Jeff Jun Jie", group: "Global Supply Chain Operations"},
+      {seat: 10, name: "Soh, Chin Liang", group: "Global Supply Chain Operations"},
+      {seat: 11, name: "Lye, Choy Ying Jolyn", group: "Global Supply Chain Operations"}
+    ],
+    4: [
+      {seat: 1, name: "Ramiah, Mangaleswary", group: "Global Supply Chain Operations"},
+      {seat: 2, name: "Teoh, Wen Xin", group: "Global Supply Chain Operations"},
+      {seat: 3, name: "Thangarajoo, Geethawathy", group: "Global Supply Chain Operations"},
+      {seat: 4, name: "Ooi, Bee Ling", group: "Global Supply Chain Operations"},
+      {seat: 5, name: "Ayavoo, Nalini", group: "Global Supply Chain Operations"},
+      {seat: 6, name: "Ang, Hao Jiun", group: "Supply Chain Planning Operation"},
+      {seat: 7, name: "Murugan, Pennarasi", group: "Supply Chain Planning Operation"},
+      {seat: 8, name: "Cheng, Elaine Ee Ling", group: "Supply Chain Planning Operation"},
+      {seat: 9, name: "Sakari, Nur Fatihah", group: "Supply Chain Planning Operation"},
+      {seat: 10, name: "Yeoh, Sheau Wen", group: "Supply Chain Planning Operation"}
+    ],
+    5: [
+      {seat: 1, name: "Julius Victorio Koentjoro", group: "Foundry Supply Chain and Manufacturing (FSMS)"},
+      {seat: 2, name: "Amit Sarkar", group: "Foundry Supply Chain and Manufacturing (FSMS)"},
+      {seat: 3, name: "Zaaim Redha, Zaaim Syukrin", group: "Foundry Supply Chain and Manufacturing (FSMS)"},
+      {seat: 4, name: "Tharini Murthy", group: "Foundry Supply Chain and Manufacturing (FSMS)"},
+      {seat: 5, name: "Lokman Marzuki", group: "Foundry Supply Chain and Manufacturing (FSMS)"},
+      {seat: 6, name: "Harris D.Ilham Adni", group: "Foundry Supply Chain and Manufacturing (FSMS)"},
+      {seat: 7, name: "Bee Ling Tan", group: "Foundry Supply Chain and Manufacturing (FSMS)"},
+      {seat: 8, name: "azri mohd khanil", group: "Foundry Supply Chain and Manufacturing (FSMS)"},
+      {seat: 9, name: "Syed Nasir Mohamed", group: "Foundry Supply Chain and Manufacturing (FSMS)"},
+      {seat: 10, name: "Mun Sun Son", group: "Foundry Supply Chain and Manufacturing (FSMS)"}
+    ],
+    6: [
+      {seat: 1, name: "Frederick Yew Shen Chong", group: "Foundry Supply Chain and Manufacturing (FSMS)"},
+      {seat: 2, name: "Nurul Zawani Muhamad Shukri", group: "Foundry Supply Chain and Manufacturing (FSMS)"},
+      {seat: 3, name: "Yeoh, Cheng Yee", group: "Supply Chain Planning Operation"},
+      {seat: 4, name: "Chan, Lin Fang", group: "Supply Chain Planning Operation"},
+      {seat: 5, name: "Liew, Choon Wai", group: "Global External Mfg & Sourcing"},
+      {seat: 6, name: "Lim, Lay hong", group: "Foundry Customer and Strategic Planning"},
+      {seat: 7, name: "Larissa Shuen Yuin Chee", group: "Foundry Supply Chain and Manufacturing (FSMS)"},
+      {seat: 8, name: "Jenson Oh", group: "Foundry Supply Chain and Manufacturing (FSMS)"},
+      {seat: 9, name: "Yen Ting Koo", group: "Foundry Supply Chain and Manufacturing (FSMS)"},
+      {seat: 10, name: "Joseph Xuan You Tian", group: "Foundry Supply Chain and Manufacturing (FSMS)"}
+    ],
+    7: [
+      {seat: 1, name: "Md Haris, Mohd Sofian", group: "Supply Chain Planning Operation"},
+      {seat: 2, name: "Mohamad Mustafa, Nurazura", group: "Supply Chain Planning Operation"},
+      {seat: 3, name: "Aikin, Nang Som Chei", group: "Supply Chain Planning Operation"},
+      {seat: 4, name: "Kamsan, Siti Nur Atiqah", group: "Supply Chain Planning Operation"},
+      {seat: 5, name: "None, Rozana", group: "Supply Chain Planning Operation"},
+      {seat: 6, name: "Halim, Norshahira", group: "Supply Chain Planning Operation"},
+      {seat: 7, name: "Sukiman, Nurul Zakiyyah", group: "Supply Chain Planning Operation"},
+      {seat: 9, name: "Che Rouse, Noor Liyana", group: "Supply Chain Planning Operation"},
+      {seat: 10, name: "Al Thanasegeran, Surendaar", group: "Supply Chain Planning Operation"},
+      {seat: 11, name: "Ibrahim, Nur Adli", group: "Supply Chain Planning Operation"}
+    ],
+    8: [
+      {seat: 1, name: "Chew, Ren", group: "Foundry Customer and Strategic Planning"},
+      {seat: 2, name: "Ping Chiet Chai", group: "Sales Operation"},
+      {seat: 3, name: "Yeap, Yi You", group: "Foundry Customer and Strategic Planning"},
+      {seat: 4, name: "Tan, Bee Huen", group: "Foundry Customer and Strategic Planning"},
+      {seat: 5, name: "Lim, Ching Yee", group: "Foundry Customer and Strategic Planning"},
+      {seat: 6, name: "Wong, Siu Wei", group: "Foundry Customer and Strategic Planning"},
+      {seat: 7, name: "Khoo, Jia Huey", group: "Foundry Customer and Strategic Planning"},
+      {seat: 8, name: "Heng, Yi Guan", group: "Foundry Customer and Strategic Planning"},
+      {seat: 9, name: "Raja Ibrahim, Putri Hasratul Iqtikah", group: "Foundry Customer and Strategic Planning"},
+      {seat: 10, name: "Wong, Jael S", group: "Foundry Customer and Strategic Planning"}
+    ],
+    9: [
+      {seat: 1, name: "Lim, Chung How", group: "Foundry Customer and Strategic Planning"},
+      {seat: 2, name: "Low, Min Qi", group: "Foundry Customer and Strategic Planning"},
+      {seat: 3, name: "Yong, Mei Eng", group: "Foundry Customer and Strategic Planning"},
+      {seat: 4, name: "Pragasam, Nicole Anne", group: "Foundry Customer and Strategic Planning"},
+      {seat: 5, name: "Sim, Yvonne Xin Yu", group: "Global Operation Support"},
+      {seat: 6, name: "Yeap, Siew Lean", group: "Global Operation Support"},
+      {seat: 7, name: "Norhaslinda Mohamad Kasim", group: "BHR"},
+      {seat: 8, name: "Jaffar, Khyrunisha", group: "BHR"}
+    ],
+    10: [
+      {seat: 1, name: "Kung, Pei Hsia", group: "Global Operations"},
+      {seat: 2, name: "Lim, Rachel Li Foong", group: "Global Operations"},
+      {seat: 3, name: "Chua, Ellie", group: "Global Operations"},
+      {seat: 4, name: "Li Fen Ho", group: "Manufacturing Supply Chain (MSC) QR"},
+      {seat: 5, name: "Lim, Lay Pin", group: "Governance Risk & Compliance"},
+      {seat: 6, name: "Yoh, Joyce", group: "Global Operations"},
+      {seat: 7, name: "Leong, Chan Kay", group: "Global Operations"},
+      {seat: 8, name: "Jessica, Choong", group: "Global Operations"},
+      {seat: 9, name: "Irene Poh Im Yeoh", group: "Global Operations"},
+      {seat: 10, name: "Lai, Zhi Hui", group: "Global Operations"},
+      {seat: 11, name: "Tan, Jing Yi", group: "Global Operations"}
+    ],
+    11: [
+      {seat: 1, name: "Leong, Dylan Chat Lun", group: "Global Supply Chain Operations"},
+      {seat: 2, name: "Tan, May Yong", group: "Global Supply Chain Operations"},
+      {seat: 3, name: "Yap, Li Wooi", group: "Global Supply Chain Operations"},
+      {seat: 4, name: "Ishak, Izeanee Bt B", group: "Global Supply Chain Operations"},
+      {seat: 5, name: "Ooi, Chooi San", group: "Global Supply Chain Operations"},
+      {seat: 6, name: "Khoo, Elise", group: "Global Operations"},
+      {seat: 7, name: "Goh, Eric", group: "Global Operations"},
+      {seat: 8, name: "Abdul Gani, Muhamad Izzulhafiz", group: "Global Supply Chain Operations"},
+      {seat: 9, name: "Leong, Adelyn Hui Lin", group: "Global Supply Chain Operations"},
+      {seat: 10, name: "Tan, Lay Sim1", group: "Global Supply Chain Operations"}
+    ],
+    12: [
+      {seat: 1, name: "Heng, Cheng Yin", group: "Global Supply Chain Operations"},
+      {seat: 2, name: "Lee, Swee Hoon", group: "Global Supply Chain Operations"},
+      {seat: 3, name: "Teoh, Pei Fen", group: "Global Supply Chain Operations"},
+      {seat: 4, name: "Abdullah, Aini Haslinda", group: "Global Supply Chain Operations"},
+      {seat: 5, name: "Abd Majid, Syamimi", group: "Global Supply Chain Operations"},
+      {seat: 6, name: "Choo, Chien Hua", group: "Global Supply Chain Operations"},
+      {seat: 7, name: "Mah, Chin Keong Alex", group: "Global Supply Chain Operations"},
+      {seat: 8, name: "Hong, Seow Earn", group: "Global Supply Chain Operations"},
+      {seat: 9, name: "Mat Yusop, Ahmad Rafaie", group: "Global Supply Chain Operations"},
+      {seat: 10, name: "Lee, Shi Ning", group: "Global Supply Chain Operations"}
+    ],
+    13: [
+      {seat: 1, name: "Wong, Woan Chiou", group: "Global Supply Chain Operations"},
+      {seat: 2, name: "Richard, Gladys", group: "Global Supply Chain Operations"},
+      {seat: 3, name: "Sim, Jeremy", group: "Global Supply Chain Operations"},
+      {seat: 4, name: "Ng, Chin Kiat", group: "Global Operations"},
+      {seat: 5, name: "Hoo, Ray", group: "Global Supply Chain Operations"},
+      {seat: 6, name: "Lim, Meng Chuan", group: "Global Operations"},
+      {seat: 7, name: "Koh, Terry Eng Keong", group: "Global External Mfg & Sourcing"},
+      {seat: 8, name: "Men, Soo Yit", group: "Global Supply Chain Operations"},
+      {seat: 9, name: "Chee San Lee", group: "Manufacturing Supply Chain (MSC) QR"},
+      {seat: 10, name: "Lo, Wei Leng", group: "Global External Mfg & Sourcing"}
+    ],
+    14: [
+      {seat: 1, name: "Goh, Amanda", group: "Global Supply Chain Operations"},
+      {seat: 2, name: "Lim, Mei Yin", group: "Global Supply Chain Operations"},
+      {seat: 3, name: "Chuah, Su Bee", group: "Global Supply Chain Operations"},
+      {seat: 4, name: "Oon, David Tyeway", group: "Global Supply Chain Operations"},
+      {seat: 5, name: "Ong, Pei Kuan", group: "Global Supply Chain Operations"},
+      {seat: 6, name: "Yew, Cherry", group: "Global Supply Chain Operations"},
+      {seat: 7, name: "Lim, Bee Hon", group: "Global Supply Chain Operations"},
+      {seat: 8, name: "Lim, Su-lyn", group: "Global Supply Chain Operations"},
+      {seat: 9, name: "Lim, Elaine Chi Ling", group: "Global Supply Chain Operations"},
+      {seat: 10, name: "Tan, Irynn Ai Ling", group: "Global Supply Chain Operations"}
+    ],
+    15: [
+      {seat: 1, name: "Silvaine, Audrey", group: "Foundry Customer and Strategic Planning"},
+      {seat: 2, name: "Tan, Alan", group: "Foundry Customer and Strategic Planning"},
+      {seat: 3, name: "Phoon, Wei Wei", group: "Foundry Customer and Strategic Planning"},
+      {seat: 4, name: "Li, Snow", group: "Foundry Customer and Strategic Planning"},
+      {seat: 5, name: "Huam, Bee Leng", group: "Foundry Customer and Strategic Planning"},
+      {seat: 6, name: "Mohd Yusoff, Mohd Aiman Afnan", group: "Global Operation Support"},
+      {seat: 7, name: "Cheah, Joseph Chai Boon", group: "Global Operation Support"},
+      {seat: 8, name: "Ho, Kok Keong", group: "Global Operation Support"},
+      {seat: 9, name: "Ng, Kang Ning", group: "Global Operation Support"},
+      {seat: 10, name: "Balasubramaniam, Hari Chand", group: "Global Operation Support"},
+      {seat: 11, name: "Ferrolino, Antonio", group: "Global Operation Support"}
+    ],
+    16: [
+      {seat: 1, name: "Lee, Rachael", group: "Global Operations"},
+      {seat: 2, name: "Lee, Wai Cheng", group: "Global Operations"},
+      {seat: 3, name: "Tan, Zhi Jie", group: "Global Operations"},
+      {seat: 4, name: "Krishnan, Jegathesen", group: "Global Operations"},
+      {seat: 5, name: "Ooi, Peng Chin", group: "Global Operations"},
+      {seat: 6, name: "Wong, Emily Mei Fong", group: "Global Operations"},
+      {seat: 7, name: "Sim, Cher Huei", group: "Global Operations"},
+      {seat: 8, name: "Ho, Cheah Luan", group: "Global Operations"},
+      {seat: 9, name: "Ooi, Kim Eng", group: "Global Operations"},
+      {seat: 10, name: "Lim, Sear Nie", group: "Global Operations"}
+    ],
+    17: [
+      {seat: 1, name: "Woo, Christine", group: "Global Supply Chain Operations"},
+      {seat: 2, name: "Ooi, Ying Hui", group: "Strategic Parts Supply Chain"},
+      {seat: 3, name: "Chang, Chun Chian", group: "Strategic Parts Supply Chain"},
+      {seat: 4, name: "Yeoh, Oon San", group: "Strategic Parts Supply Chain"},
+      {seat: 5, name: "Tan, Guat Ngoh", group: "Strategic Parts Supply Chain"},
+      {seat: 6, name: "Chee Hwei Ko", group: "Advanced Packaging & Test"},
+      {seat: 7, name: "Lim, Kok Loon", group: "Strategic Parts Supply Chain"},
+      {seat: 8, name: "Sock Khim Pah", group: "Advanced Packaging & Test"},
+      {seat: 9, name: "Cheah, Beng Gaik", group: "Strategic Parts Supply Chain"},
+      {seat: 10, name: "Ai Ni Eng", group: "Advanced Packaging & Test"}
+    ]
+  };
+
+  let highlightedTableId = null;
+
+  // Render Ballroom Map
+  function buildBallroomMap() {
+    const grid = document.getElementById('ballroomGrid');
+
+    for (let r = 1; r <= 6; r++) {
+      for (let c = 1; c <= 12; c++) {
+        const key = `${r},${c}`;
+        const tableId = TABLE_COORDINATE_MAP[key];
+
+        if (tableId) {
+          const tableNode = document.createElement('div');
+          tableNode.className = 'table-node';
+          tableNode.id = `tableNode_${tableId}`;
+          tableNode.style.gridRow = r;
+          tableNode.style.gridColumn = c;
+
+          const is11Pax = TABLES_WITH_11_SEATS.includes(tableId);
+          const maxCap = is11Pax ? 11 : 10;
+
+          // Check occupied count
+          const seatedList = SEATING_RESERVATIONS[tableId] || [];
+          const occCount = seatedList.length > 0 ? seatedList.length : maxCap; 
+
+          if ([7, 9, 23, 27, 30, 31].includes(tableId)) {
+            tableNode.classList.add('not-full');
+          }
+
+          tableNode.innerHTML = `
+            ${is11Pax ? '<span class="eleven-tag">11P</span>' : ''}
+            <div class="table-num">T${tableId}</div>
+            <div class="table-cap">${occCount}/${maxCap}</div>
+          `;
+
+          tableNode.onclick = () => openTableModal(tableId);
+          grid.appendChild(tableNode);
+        }
+      }
+    }
+  }
+
+  // Search Guest by Name
+  function handleSearch() {
+    const query = document.getElementById('searchInput').value.trim().toLowerCase();
+    const resultBox = document.getElementById('searchResult');
+
+    if (!query) {
+      resultBox.classList.remove('active');
+      return;
+    }
+
+    let foundGuest = null;
+    let foundTable = null;
+
+    for (const [tId, seats] of Object.entries(SEATING_RESERVATIONS)) {
+      const match = seats.find(s => s.name.toLowerCase().includes(query));
+      if (match) {
+        foundGuest = match;
+        foundTable = tId;
+        break;
+      }
+    }
+
+    if (foundGuest) {
+      document.getElementById('resName').textContent = foundGuest.name;
+      document.getElementById('resDept').textContent = foundGuest.group;
+      document.getElementById('resTable').textContent = `Table ${foundTable}`;
+      document.getElementById('resSeat').textContent = `Seat ${foundGuest.seat}`;
+      resultBox.classList.add('active');
+
+      highlightTable(foundTable);
+    } else {
+      alert("No reservation found matching '" + query + "'. Please check your spelling or contact the registration desk.");
+      resultBox.classList.remove('active');
+    }
+  }
+
+  // Highlight Table on Map
+  function highlightTable(tableId) {
+    if (highlightedTableId) {
+      const prev = document.getElementById(`tableNode_${highlightedTableId}`);
+      if (prev) prev.classList.remove('highlighted');
+    }
+    highlightedTableId = tableId;
+    const target = document.getElementById(`tableNode_${tableId}`);
+    if (target) {
+      target.classList.add('highlighted');
+    }
+  }
+
+  function scrollToTable() {
+    if (highlightedTableId) {
+      const target = document.getElementById(`tableNode_${highlightedTableId}`);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+      }
+    }
+  }
+
+  // Modal logic
+  function openTableModal(tableId) {
+    const modal = document.getElementById('tableModal');
+    const title = document.getElementById('modalTableTitle');
+    const cap = document.getElementById('modalTableCapacity');
+    const list = document.getElementById('modalRosterList');
+
+    const is11Pax = TABLES_WITH_11_SEATS.includes(tableId);
+    const capacity = is11Pax ? 11 : 10;
+    const guests = SEATING_RESERVATIONS[tableId] || [];
+
+    title.textContent = `Table ${tableId} Guest Seating`;
+    cap.textContent = `Table Capacity: ${capacity} PAX • ${guests.length} Confirmed Guests`;
+    list.innerHTML = '';
+
+    if (guests.length === 0) {
+      list.innerHTML = `<li style="color: var(--text-muted); padding: 15px; text-align: center;">Confirmed table seating loaded.</li>`;
+    } else {
+      guests.forEach(g => {
+        const item = document.createElement('li');
+        item.className = 'roster-item';
+        item.innerHTML = `
+          <div class="seat-badge">Seat ${g.seat}</div>
+          <div class="guest-info">
+            <div class="guest-name">${g.name}</div>
+            <div class="guest-dept">${g.group}</div>
+          </div>
+        `;
+        list.appendChild(item);
+      });
+    }
+
+    modal.classList.add('active');
+  }
+
+  function closeModal() {
+    document.getElementById('tableModal').classList.remove('active');
+  }
+
+  function closeModalOnBackdrop(e) {
+    if (e.target.id === 'tableModal') closeModal();
+  }
+
+  // Enter key trigger for search
+  document.getElementById('searchInput').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') handleSearch();
+  });
+
+  // Init
+  window.onload = buildBallroomMap;
+</script>
+
+</body>
+</html>
