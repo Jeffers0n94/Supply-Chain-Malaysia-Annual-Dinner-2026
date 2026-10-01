@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>SCM Annual Dinner 2026 | Event Hub</title>
+  <style>
+    :root {
+      --bg-main: #0b132b;
+      --bg-panel: #1c2541;
+      --bg-card: #151d38;
+      --accent-cyan: #64dfdf;
+      --accent-teal: #5bc0be;
+      --accent-gold: #ffb703;
+      --accent-green: #52b788;
+      --accent-purple: #9d4edd;
+      --accent-pink: #ff4d6d;
+      --text-main: #ffffff;
+      --text-muted: #8d99ae;
+      --border-color: #3a506b;
+      --card-radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      padding: 16px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(100, 223, 223, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(255, 183, 3, 0.06) 0%, transparent 40%);
+    }
+
+    .container {
+      width: 100%;
+      max-width: 600px; /* Mobile-first container */
+    }
+
+    /* Event Hero Header */
+    .hero-banner {
+      background: linear-gradient(135deg, #1c2541 0%, #0d1b2a 100%);
+      border: 1px solid var(--border-color);
+      border-radius: var(--card-radius);
+      padding: 26px 20px 22px;
+      text-align: center;
+      margin-bottom: 22px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-banner::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 4px;
+      background: linear-gradient(90deg, var(--accent-cyan), var(--accent-gold), var(--accent-teal));
+    }
+    .badge-event {
+      display: inline-block;
+      background: rgba(100, 223, 223, 0.12);
+      color: var(--accent-cyan);
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.6px;
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+      border: 1px solid rgba(100, 223, 223, 0.25);
+    }
+    .hero-banner h1 {
+      font-size: 1.7rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+    .hero-banner h2 {
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--accent-gold);
+      margin-bottom: 12px;
+    }
+    .event-meta {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 12px;
+    }
+    .event-meta span {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* Welcome Section */
+    .welcome-card {
+      background: rgba(28, 37, 65, 0.6);
+      border: 1px dashed var(--border-color);
+      border-radius: 12px;
+      padding: 14px 18px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .welcome-icon {
+      font-size: 2rem;
+      flex-shrink: 0;
+    }
+    .welcome-text h3 {
+      font-size: 0.95rem;
+      color: var(--accent-cyan);
+      margin-bottom: 2px;
+    }
+    .welcome-text p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.35;
+    }
+
+    /* 8-Tile Navigation Grid */
+    .hub-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-bottom: 25px;
+    }
+
+    .hub-card {
+      background: var(--bg-panel);
+      border: 1px solid var(--border-color);
+      border-radius: var(--card-radius);
+      padding: 20px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-decoration: none;
+      color: var(--text-main);
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s, border-color 0.2s;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+    }
+    .hub-card:active {
+      transform: scale(0.96);
+    }
+    .hub-card:hover {
+      border-color: var(--accent-cyan);
+      box-shadow: 0 8px 20px rgba(100, 223, 223, 0.2);
+    }
+
+    /* Highlighting Primary Action: Seating */
+    .hub-card.primary {
+      background: linear-gradient(135deg, #1c2541 0%, #1e3a5f 100%);
+      border: 1.5px solid var(--accent-cyan);
+      box-shadow: 0 6px 18px rgba(100, 223, 223, 0.25);
+    }
+    .hub-card.primary:hover {
+      box-shadow: 0 10px 25px rgba(100, 223, 223, 0.4);
+    }
+
+    /* Card Elements */
+    .card-icon {
+      font-size: 2rem;
+      margin-bottom: 12px;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .hub-card.primary .card-icon {
+      background: rgba(100, 223, 223, 0.15);
+      border-color: rgba(100, 223, 223, 0.3);
+    }
+    .card-title {
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .card-desc {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      line-height: 1.35;
+    }
+    .card-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      font-size: 0.62rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 3px 8px;
+      border-radius: 20px;
+    }
+    .badge-live {
+      background: rgba(82, 183, 136, 0.2);
+      color: var(--accent-green);
+      border: 1px solid rgba(82, 183, 136, 0.4);
+    }
+    .badge-hot {
+      background: rgba(255, 183, 3, 0.2);
+      color: var(--accent-gold);
+      border: 1px solid rgba(255, 183, 3, 0.4);
+    }
+    .badge-fun {
+      background: rgba(255, 77, 109, 0.2);
+      color: var(--accent-pink);
+      border: 1px solid rgba(255, 77, 109, 0.4);
+    }
+    .badge-new {
+      background: rgba(157, 78, 221, 0.2);
+      color: var(--accent-purple);
+      border: 1px solid rgba(157, 78, 221, 0.4);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      padding: 10px 0 25px;
+    }
+    footer a {
+      color: var(--accent-teal);
+      text-decoration: none;
+    }
+
+    /* Modal / Popups for Non-Seating Buttons */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(5px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      padding: 16px;
+    }
+    .modal-overlay.active {
+      display: flex;
+    }
+    .modal-content {
+      background: var(--bg-panel);
+      border: 1px solid var(--accent-teal);
+      border-radius: var(--card-radius);
+      width: 100%;
+      max-width: 480px;
+      max-height: 85vh;
+      overflow-y: auto;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+      padding: 24px;
+      position: relative;
+    }
+    .close-btn {
+      position: absolute;
+      top: 16px;
+      right: 18px;
+      background: none;
+      border: none;
+      font-size: 1.6rem;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+    .modal-header h3 {
+      font-size: 1.3rem;
+      color: var(--accent-cyan);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .modal-header p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+    }
+    .modal-body {
+      font-size: 0.88rem;
+      line-height: 1.5;
+      color: #e0e1dd;
+    }
+
+    /* Interactive Schedule Timeline */
+    .timeline-item {
+      display: flex;
+      gap: 14px;
+      padding: 10px 0;
+      border-bottom: 1px dashed var(--border-color);
+    }
+    .timeline-time {
+      font-weight: 700;
+      color: var(--accent-gold);
+      min-width: 75px;
+      font-size: 0.85rem;
+    }
+    .timeline-desc strong {
+      color: #ffffff;
+      display: block;
+      font-size: 0.9rem;
+    }
+    .timeline-desc span {
+      color: var(--text-muted);
+      font-size: 0.78rem;
+    }
+
+    /* Lucky Draw & Game Preview */
+    .lucky-box {
+      background: var(--bg-card);
+      border: 1px solid var(--accent-gold);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      margin: 15px 0;
+    }
+    .lucky-number {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--accent-gold);
+      letter-spacing: 4px;
+      margin: 8px 0;
+    }
+    .action-modal-btn {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      background: var(--accent-cyan);
+      color: #0b132b;
+      font-weight: 700;
+      border-radius: 8px;
+      border: none;
+      margin-top: 14px;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <!-- Hero Banner -->
+  <header class="hero-banner">
+    <div class="badge-event">Intel Supply Chain Malaysia</div>
+    <h1>Annual Dinner 2026</h1>
+    <h2>Evening of Appreciation & Celebration</h2>
+    
+    <div class="event-meta">
+      <span>📍 Grand Ballroom</span>
+      <span>⏰ 6:30 PM - 10:30 PM</span>
+    </div>
+  </header>
+
+  <!-- Welcome Banner -->
+  <div class="welcome-card">
+    <div class="welcome-icon">✨</div>
+    <div class="welcome-text">
+      <h3>Welcome, SCM Team!</h3>
+      <p>Tap any of the 8 event cards below to find your seat, explore activities, and participate in tonight's stage games.</p>
+    </div>
+  </div>
+
+  <!-- 8 Action Cards Navigation Hub -->
+  <main class="hub-grid">
+
+    <!-- 1. Seat & Reservation (Direct Link to Seating Floor Plan) -->
+    <a href="seating.html" class="hub-card primary">
+      <span class="card-badge badge-live">Live Map</span>
+      <div class="card-icon">🪑</div>
+      <div class="card-title">Seat & Reservation</div>
+      <div class="card-desc">Find your assigned table, seat number & ballroom floor map.</div>
+    </a>
+
+    <!-- 2. Event Schedule -->
+    <div class="hub-card" onclick="openModal('schedule')">
+      <span class="card-badge badge-hot">Rundown</span>
+      <div class="card-icon">🕒</div>
+      <div class="card-title">Event Schedule</div>
+      <div class="card-desc">Tonight's agenda, speech timings, buffet opening & performances.</div>
+    </div>
+
+    <!-- 3. Lucky Draw -->
+    <div class="hub-card" onclick="openModal('luckyDraw')">
+      <span class="card-badge badge-hot">Grand Prizes</span>
+      <div class="card-icon">🎁</div>
+      <div class="card-title">Lucky Draw</div>
+      <div class="card-desc">Check your lucky draw eligibility, prize tiers & live draw updates.</div>
+    </div>
+
+    <!-- 4. Performance -->
+    <div class="hub-card" onclick="openModal('performance')">
+      <span class="card-badge badge-fun">Showcase</span>
+      <div class="card-icon">🎭</div>
+      <div class="card-title">Performance</div>
+      <div class="card-desc">Special stage shows, musical acts & internal talent highlights.</div>
+    </div>
+
+    <!-- 5. Photobooths -->
+    <div class="hub-card" onclick="openModal('photobooth')">
+      <span class="card-badge badge-fun">Instant Print</span>
+      <div class="card-icon">📸</div>
+      <div class="card-title">Photobooths</div>
+      <div class="card-desc">Booth locations, photo backdrops, 360 spin cam & digital downloads.</div>
+    </div>
+
+    <!-- 6. Try Your Luck -->
+    <div class="hub-card" onclick="openModal('minigame')">
+      <span class="card-badge badge-new">Interactive</span>
+      <div class="card-icon">🎲</div>
+      <div class="card-title">Try Your Luck</div>
+      <div class="card-desc">Fun interactive dinner games & trivia to win instant door gifts.</div>
+    </div>
+
+    <!-- 7. Event Committee -->
+    <div class="hub-card" onclick="openModal('committee')">
+      <span class="card-badge badge-live">Team</span>
+      <div class="card-icon">👥</div>
+      <div class="card-title">Event Committee</div>
+      <div class="card-desc">Meet the organizing committee members making tonight possible.</div>
+    </div>
+
+    <!-- 8. Mystery -->
+    <div class="hub-card" onclick="openModal('mystery')">
+      <span class="card-badge badge-new">Classified</span>
+      <div class="card-icon">🔮</div>
+      <div class="card-title">Mystery</div>
+      <div class="card-desc">Surprise grand reveal scheduled during the finale ceremony.</div>
+    </div>
+
+  </main>
+
+  <footer>
+    Intel Supply Chain Malaysia (SCM) &bull; Annual Dinner 2026<br>
+    Questions or assistance? Visit the Registration Counter near the entrance.
+  </footer>
+</div>
+
+<!-- Dynamic Modal Popup -->
+<div class="modal-overlay" id="hubModal" onclick="closeModalOnBackdrop(event)">
+  <div class="modal-content">
+    <button class="close-btn" onclick="closeModal()">&times;</button>
+    <div class="modal-header">
+      <h3 id="modalTitle">Details</h3>
+      <p id="modalSubtitle">Event Information</p>
+    </div>
+    <div class="modal-body" id="modalBody">
+      <!-- Injected dynamically via JS -->
+    </div>
+  </div>
+</div>
+
+<script>
+  // Content dictionary for the modal cards
+  const MODAL_CONTENT = {
+    schedule: {
+      title: "🕒 Event Rundown",
+      subtitle: "Supply Chain Malaysia Annual Dinner 2026 Agenda",
+      body: `
+        <div class="timeline-item">
+          <div class="timeline-time">6:30 PM</div>
+          <div class="timeline-desc"><strong>Arrival & Red Carpet Check-In</strong><span>Cocktail reception, photobooths & seating entry</span></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">7:15 PM</div>
+          <div class="timeline-desc"><strong>Grand Opening & Welcome Speech</strong><span>Opening address by SCM Leadership</span></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">7:45 PM</div>
+          <div class="timeline-desc"><strong>Buffet Banquet Dinner Served</strong><span>Free flow food & beverages open</span></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">8:30 PM</div>
+          <div class="timeline-desc"><strong>Stage Performance & Talent Showcase</strong><span>Live entertainment acts & departmental fun</span></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">9:15 PM</div>
+          <div class="timeline-desc"><strong>Grand Lucky Draw & Interactive Games</strong><span>Major prize calls & attendee stage contests</span></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">10:15 PM</div>
+          <div class="timeline-desc"><strong>Grand Mystery Reveal & Closing Toast</strong><span>Celebration group photography & farewell</span></div>
+        </div>
+      `
+    },
+    luckyDraw: {
+      title: "🎁 Lucky Draw System",
+      subtitle: "Exciting prizes await tonight's lucky attendees!",
+      body: `
+        <p>All registered dinner guests are automatically entered into tonight's digital Lucky Draw system using your ticket registration.</p>
+        <div class="lucky-box">
+          <span style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;">Tonight's Grand Prizes</span>
+          <div class="lucky-number">🏆 100+ PRIZES</div>
+          <span style="font-size: 0.85rem; color: var(--accent-gold);">Flagship Smartphones, Smart TVs, Gaming Tech & Vouchers</span>
+        </div>
+        <p style="font-size: 0.82rem; color: var(--text-muted);">
+          ⚠️ <em>Winners must be physically present in the ballroom during the prize calls to claim awards.</em>
+        </p>
+      `
+    },
+    performance: {
+      title: "🎭 Stage Performances",
+      subtitle: "Showcase lineup for tonight's celebration",
+      body: `
+        <p style="margin-bottom: 12px;">Get ready for an electrifying lineup featuring internal talents and guest stage entertainers:</p>
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px;">
+          <li style="background: rgba(255,255,255,0.05); padding: 10px 14px; border-radius: 8px; border-left: 3px solid var(--accent-cyan);">
+            <strong>🌟 Opening Symphony & Lighting Show</strong><br>
+            <span style="font-size: 0.78rem; color: var(--text-muted);">A high-energy welcome sequence to kick off our dinner.</span>
+          </li>
+          <li style="background: rgba(255,255,255,0.05); padding: 10px 14px; border-radius: 8px; border-left: 3px solid var(--accent-pink);">
+            <strong>🎸 The SCM All-Stars Live Band</strong><br>
+            <span style="font-size: 0.78rem; color: var(--text-muted);">Featuring popular classics and crowd favorites performed by colleagues.</span>
+          </li>
+          <li style="background: rgba(255,255,255,0.05); padding: 10px 14px; border-radius: 8px; border-left: 3px solid var(--accent-gold);">
+            <strong>💃 Flash Dance Extravaganza</strong><br>
+            <span style="font-size: 0.78rem; color: var(--text-muted);">A surprise collaborative performance from across our business groups.</span>
+          </li>
+        </ul>
+      `
+    },
+    photobooth: {
+      title: "📸 Photobooths & 360 Spin",
+      subtitle: "Capture and download your evening memories",
+      body: `
+        <p>Two dedicated photo areas are available right outside the main ballroom foyer:</p>
+        <div style="margin: 14px 0; display: flex; flex-direction: column; gap: 10px;">
+          <div style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 8px;">
+            <strong style="color: var(--accent-cyan);">Station A: Glamour Red Carpet & Backdrop</strong>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">Unlimited instant 4R photo prints with customized SCM 2026 photo frames.</p>
+          </div>
+          <div style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 8px;">
+            <strong style="color: var(--accent-gold);">Station B: 360 Slow-Mo Video Platform</strong>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">Hop onto the platform with props and download your video via instant AirDrop / QR code!</p>
+          </div>
+        </div>
+        <p style="font-size: 0.8rem; color: var(--accent-green); text-align: center;">All photos will be uploaded to our shared digital album post-event.</p>
+      `
+    },
+    minigame: {
+      title: "🎲 Try Your Luck",
+      subtitle: "Test your fortune with tonight's digital mini-challenge!",
+      body: `
+        <p>Spin the digital wheel or guess the mystery code to unlock instant bonus door gifts!</p>
+        <div class="lucky-box">
+          <div style="font-size: 0.9rem; margin-bottom: 6px;">Tonight's Lucky Token</div>
+          <div class="lucky-number" id="randomToken">SCM-777</div>
+          <button class="action-modal-btn" onclick="generateToken()">Tap to Spin New Token</button>
+        </div>
+        <p style="font-size: 0.8rem; color: var(--text-muted); text-align: center;">Show a matching token to the game booth crew to collect surprise merch.</p>
+      `
+    },
+    committee: {
+      title: "👥 Event Organizing Committee",
+      subtitle: "Behind the scenes of SCM Annual Dinner 2026",
+      body: `
+        <p style="margin-bottom: 12px;">A sincere appreciation to the entire organizing team for their dedication in putting this celebration together:</p>
+        <div style="font-size: 0.85rem; line-height: 1.6; background: rgba(255,255,255,0.04); padding: 14px; border-radius: 10px;">
+          <p>👑 <strong>Event Leads & Logistics:</strong> Jeff Heah, Dylan Leong & Event Core Team</p>
+          <p>🎨 <strong>Creative & UI Design:</strong> Supply Chain Media Committee</p>
+          <p>🎙️ <strong>Stage & Program:</strong> Emcee & Performance Working Group</p>
+          <p>🎁 <strong>Gifts & Sponsorship:</strong> SCM Operations & Support Teams</p>
+        </div>
+        <p style="font-size: 0.82rem; color: var(--accent-teal); text-align: center; margin-top: 14px;">Thank you for making our annual dinner memorable!</p>
+      `
+    },
+    mystery: {
+      title: "🔮 Mystery Grand Reveal",
+      subtitle: "Classified Intel • Unlocking at 10:15 PM",
+      body: `
+        <div class="lucky-box" style="border-color: var(--accent-purple);">
+          <div style="font-size: 2.2rem; margin-bottom: 6px;">🔒</div>
+          <div style="font-size: 1.1rem; font-weight: 700; color: var(--accent-purple);">TOP SECRET REVEAL</div>
+          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 8px;">The contents of this mystery box will be revealed live on stage by the leadership team.</p>
+        </div>
+        <p style="font-size: 0.82rem; text-align: center; color: var(--accent-cyan);">Stay tuned to the main LED stage screen at the end of the evening!</p>
+      `
+    }
+  };
+
+  function openModal(type) {
+    const data = MODAL_CONTENT[type];
+    if (!data) return;
+
+    document.getElementById('modalTitle').innerHTML = data.title;
+    document.getElementById('modalSubtitle').textContent = data.subtitle;
+    document.getElementById('modalBody').innerHTML = data.body;
+    document.getElementById('hubModal').classList.add('active');
+  }
+
+  function closeModal() {
+    document.getElementById('hubModal').classList.remove('active');
+  }
+
+  function closeModalOnBackdrop(e) {
+    if (e.target.id === 'hubModal') closeModal();
+  }
+
+  function generateToken() {
+    const randomNum = Math.floor(100 + Math.random() * 900);
+    const prefixes = ['SCM', 'INTEL', 'WIN', 'LUCKY', 'GOLD'];
+    const prefix = prefixes[Math.floor(Math.random() * prefixes.length)];
+    const el = document.getElementById('randomToken');
+    if (el) {
+      el.textContent = `${prefix}-${randomNum}`;
+      el.style.transform = 'scale(1.1)';
+      setTimeout(() => el.style.transform = 'scale(1)', 200);
+    }
+  }
+</script>
+
+</body>
+</html>
