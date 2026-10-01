@@ -345,28 +345,6 @@
       padding: 14px;
       margin-bottom: 12px;
     }
-    .lucky-number {
-      font-size: 2rem;
-      font-weight: 800;
-      color: var(--accent-gold);
-      letter-spacing: 3px;
-      margin: 8px 0;
-      text-align: center;
-    }
-    .action-modal-btn {
-      display: block;
-      width: 100%;
-      padding: 12px;
-      background: var(--accent-cyan);
-      color: #0b132b;
-      font-weight: 700;
-      border-radius: 8px;
-      border: none;
-      margin-top: 12px;
-      cursor: pointer;
-      text-align: center;
-      text-decoration: none;
-    }
   </style>
 </head>
 <body>
@@ -425,7 +403,7 @@
       <span class="card-badge badge-fun">Showcase</span>
       <div class="card-icon">🎭</div>
       <div class="card-title">Performance</div>
-      <div class="card-desc">Live band sets, opening flash mob & internal team talent shows.</div>
+      <div class="card-desc">Live band sets, opening showcase & internal team talent acts.</div>
     </div>
 
     <!-- 5. Photobooths -->
@@ -457,7 +435,7 @@
       <span class="card-badge badge-new">Surprise</span>
       <div class="card-icon">🔮</div>
       <div class="card-title">Mystery</div>
-      <div class="card-desc">Mystery chair stickers & the mystery box challenge.</div>
+      <div class="card-desc">Special surprise reveal & evening spontaneous moments.</div>
     </div>
 
   </main>
@@ -507,8 +485,8 @@
           <div class="timeline-item highlight">
             <div class="timeline-time">6:30 PM</div>
             <div class="timeline-desc">
-              <strong>Welcome Opening - Manager Flash Mob</strong>
-              <span>High-energy opening performance to kick off the dinner programme</span>
+              <strong>Opening Session</strong>
+              <span>Official opening presentation to kick off the dinner programme</span>
             </div>
           </div>
           <div class="timeline-item">
@@ -584,8 +562,8 @@
           <div class="timeline-item highlight">
             <div class="timeline-time">9:03 PM</div>
             <div class="timeline-desc">
-              <strong>Mystery Gifts: 11 Chair Stickers</strong>
-              <span>Surprise reveals beneath selected guest chairs</span>
+              <strong>Mystery Surprise Reveal</strong>
+              <span>A spontaneous surprise moment for attendees across the ballroom</span>
             </div>
           </div>
           <div class="timeline-item">
@@ -661,8 +639,8 @@
       subtitle: "Live entertainment & team talent lineup",
       body: `
         <div class="info-card">
-          <strong style="color: var(--accent-pink);">🌟 Manager Flash Mob (6:30 PM)</strong>
-          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 3px;">The official surprise opening sequence immediately following the dinner opening video.</p>
+          <strong style="color: var(--accent-pink);">🌟 Opening Session (6:30 PM)</strong>
+          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 3px;">The official opening presentation immediately following the dinner opening video.</p>
         </div>
         <div class="info-card">
           <strong style="color: var(--accent-cyan);">🎸 Live Band Performance Sets</strong>
@@ -730,15 +708,19 @@
 
     mystery: {
       title: "🔮 Mystery Surprise",
-      subtitle: "Surprise reveals during the evening",
+      subtitle: "Surprise moments waiting to be unveiled",
       body: `
         <div class="info-card" style="border-color: var(--accent-purple); text-align: center;">
-          <div style="font-size: 2rem; margin-bottom: 4px;">🪑</div>
-          <strong style="color: var(--accent-purple); font-size: 1rem; display: block;">11 Lucky Chair Stickers (9:03 PM)</strong>
-          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 8px;">At 9:03 PM, check beneath your chair seat for the official lucky sticker to claim an exclusive mystery gift!</p>
+          <div style="font-size: 2.2rem; margin-bottom: 8px;">✨🎁✨</div>
+          <strong style="color: var(--accent-purple); font-size: 1.05rem; display: block; margin-bottom: 6px;">Spontaneous Ballroom Surprise (9:03 PM)</strong>
+          <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.4;">Keep your eyes and ears open! A special secret surprise segment will be unveiled live across the ballroom.</p>
         </div>
-        <p style="font-size: 0.78rem; color: var(--text-muted); text-align: center; margin-top: 10px;">
-          *Please remain at your assigned seats; stickers are fixed to specific chairs.
+        <div class="info-card" style="border-color: var(--accent-gold); text-align: center; margin-top: 10px;">
+          <strong style="color: var(--accent-gold); font-size: 0.9rem; display: block; margin-bottom: 4px;">The Black Box Mystery (9:08 PM)</strong>
+          <p style="font-size: 0.8rem; color: var(--text-muted);">Who has the intuition and curiosity to identify what lies inside the mystery box?</p>
+        </div>
+        <p style="font-size: 0.76rem; color: var(--text-muted); text-align: center; margin-top: 10px; font-style: italic;">
+          Stay at your table and be ready — fortune favors the attentive!
         </p>
       `
     }
