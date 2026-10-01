@@ -424,8 +424,8 @@
       transform: translateY(-2px);
     }
     .committee-avatar {
-      width: 52px;
-      height: 52px;
+      width: 54px;
+      height: 54px;
       border-radius: 50%;
       object-fit: cover;
       border: 2px solid var(--accent-cyan);
@@ -460,19 +460,6 @@
       color: var(--accent-gold);
       border: 1px solid rgba(255, 183, 3, 0.3);
       white-space: nowrap;
-    }
-    .section-lead-title {
-      font-size: 0.82rem;
-      font-weight: 700;
-      color: var(--accent-gold);
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      margin: 16px 0 8px;
-      padding-bottom: 4px;
-      border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
-    }
-    .section-lead-title:first-child {
-      margin-top: 0;
     }
   </style>
 </head>
@@ -598,109 +585,110 @@
 </div>
 
 <script>
-  // Committee Data from PPTX with photos
+  // Committee Data from PPTX with image filenames
+  // Put your images inside an 'images/' folder in your repo (e.g., images/suryakandh.png)
   const COMMITTEE_MEMBERS = [
     {
       name: "Suryakandh Kalimutu",
       dept: "SCPO-CPOG",
       role: "Committee Lead",
-      photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80"
+      photo: "images/suryakandh_kalimutu.png"
     },
     {
       name: "Jeff Heah Jun Jie",
       dept: "GSCO-CPOG",
       role: "Committee Lead",
-      photo: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80"
+      photo: "images/jeff_heah.png"
     },
     {
       name: "Dylan Leong Chat Lun",
       dept: "GSCO-CPOG",
       role: "Lucky Draw & Games",
-      photo: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=150&auto=format&fit=crop&q=80"
+      photo: "images/dylan_leong.png"
     },
     {
       name: "Christine Woo",
       dept: "GSCO-CPOG",
       role: "Media & Photography",
-      photo: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80"
+      photo: "images/christine_woo.png"
     },
     {
       name: "Kasturi Krishnan",
       dept: "SCPO-CPOG",
       role: "Vendor Coordinator",
-      photo: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80"
+      photo: "images/kasturi_krishnan.png"
     },
     {
       name: "Teoh Pei Fen",
       dept: "GSCO-CPOG",
       role: "Emcee & Stage Host",
-      photo: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&auto=format&fit=crop&q=80"
+      photo: "images/teoh_pei_fen.png"
     },
     {
       name: "Lee Swee Hoon",
       dept: "GSCO-CPOG",
       role: "Performance Lead",
-      photo: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&auto=format&fit=crop&q=80"
+      photo: "images/lee_swee_hoon.png"
     },
     {
       name: "Celine Yap Y Mendoza",
       dept: "GSCO-CPOG",
       role: "Door Gift Lead",
-      photo: "https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?w=150&auto=format&fit=crop&q=80"
+      photo: "images/celine_yap.png"
     },
     {
       name: "Chiravong A Ne Chin",
       dept: "FCS-Intel Foundry",
       role: "Event Operations",
-      photo: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=150&auto=format&fit=crop&q=80"
+      photo: "images/chiravong_ne_chin.png"
     },
     {
       name: "Eugene Loke Shiuk Ming",
       dept: "FCSP-Intel Foundry",
       role: "Event Operations",
-      photo: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150&auto=format&fit=crop&q=80"
+      photo: "images/eugene_loke.png"
     },
     {
       name: "Jenson Oh",
       dept: "IFA-Intel Foundry",
       role: "Event Operations",
-      photo: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&auto=format&fit=crop&q=80"
+      photo: "images/jenson_oh.png"
     },
     {
       name: "Azri Mohd Khanil",
       dept: "FIFA-Intel Foundry",
       role: "Event Operations",
-      photo: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&auto=format&fit=crop&q=80"
+      photo: "images/azri_mohd_khanil.png"
     },
     {
       name: "Abbie Yen Ting Koo",
       dept: "IFA-Intel Foundry",
       role: "Event Operations",
-      photo: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&auto=format&fit=crop&q=80"
+      photo: "images/abbie_yen_ting_koo.png"
     },
     {
       name: "Syed Nasir Mohamed",
       dept: "IFA-Intel Foundry",
       role: "Lucky Draw & Games",
-      photo: "https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?w=150&auto=format&fit=crop&q=80"
+      photo: "images/syed_nasir_mohamed.png"
     },
     {
       name: "Hakim Ab Razak",
       dept: "FCSP-Intel Foundry",
       role: "Performance Team",
-      photo: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150&auto=format&fit=crop&q=80"
+      photo: "images/hakim_ab_razak.png"
     },
     {
       name: "Catherine Lim",
       dept: "FCS-Intel Foundry",
       role: "Vendor Coordinator",
-      photo: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=150&auto=format&fit=crop&q=80"
+      photo: "images/catherine_lim.png"
     },
     {
       name: "Chan Kl Chan",
       dept: "FCS-Intel Foundry",
       role: "Door Gift Team",
-      photo: "https://images.unsplash.com/photo-1522529599102-193c0d76b5b6?w=150&auto=format&fit=crop&q=80"
+      photo: "images/chan_kl_chan.png"
     }
   ];
 
@@ -713,9 +701,11 @@
     `;
 
     COMMITTEE_MEMBERS.forEach(m => {
+      // Automatic fallback avatar with member initials if local image is loading or missing
+      const fallbackUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(m.name)}&background=1c2541&color=64dfdf&bold=true`;
       html += `
         <div class="committee-card">
-          <img class="committee-avatar" src="${m.photo}" alt="${m.name}" onerror="this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(m.name)}&background=1c2541&color=64dfdf&bold=true'" />
+          <img class="committee-avatar" src="${m.photo}" alt="${m.name}" onerror="this.onerror=null; this.src='${fallbackUrl}'" />
           <div class="committee-info">
             <div class="committee-name">${m.name}</div>
             <div class="committee-dept">${m.dept}</div>
@@ -817,7 +807,7 @@
             <div class="timeline-time">8:43 PM</div>
             <div class="timeline-desc">
               <strong>Best Dressed Final Showcase & Awards</strong>
-              <span>Finalist runway walk, live audience voting & prize presentation</span>
+              <span>Finalist runway walk, live audience QR voting & prize presentation</span>
             </div>
           </div>
           <div class="timeline-item">
